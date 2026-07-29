@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<title>SafeMother</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-tint:#f2faf9;
+    --primary:#0f8b8d;
+    --primary-dark:#0b6e70;
+    --primary-light:#e3f5f4;
+    --text:#16262a;
+    --text-muted:#5b7278;
+    --border:#d8ece9;
+    --low:#1f9d55;
+    --low-bg:#e9f8ef;
+    --mid:#c07d02;
+    --mid-bg:#fdf3df;
+    --high:#c73b52;
+    --high-bg:#fbe9ec;
+    --radius:16px;
+    --shadow: 0 8px 30px rgba(15,139,141,0.10);
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:520px;
+    margin:0 auto;
+    padding:28px 20px 48px;
+    min-height:100vh;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    text-align:center;
+    margin-bottom:22px;
+  }
+
+  .eyebrow{
+    display:inline-block;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--primary-dark);
+    background:var(--primary-light);
+    padding:5px 12px;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+
+  h1{
+    font-family:'Poppins', sans-serif;
+    font-size:26px;
+    font-weight:700;
+    margin:0 0 8px;
+    color:var(--text);
+  }
+
+  .subtitle{
+    font-size:14.5px;
+    color:var(--text-muted);
+    margin:0 0 18px;
+    line-height:1.5;
+  }
+
+  /* EKG signature line */
+  .ekg{
+    width:100%;
+    height:44px;
+    display:block;
+  }
+  .ekg path{
+    fill:none;
+    stroke:var(--primary);
+    stroke-width:2.5;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:340;
+    stroke-dashoffset:340;
+    animation:draw 3.2s ease-in-out infinite;
+  }
+  @keyframes draw{
+    0%{ stroke-dashoffset:340; opacity:0.35; }
+    45%{ stroke-dashoffset:0; opacity:1; }
+    60%{ stroke-dashoffset:0; opacity:1; }
+    100%{ stroke-dashoffset:-340; opacity:0.35; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ekg path{ animation:none; stroke-dashoffset:0; opacity:0.8; }
+  }
+
+  /* ---------- Form card ---------- */
+  .card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:22px 20px 20px;
+  }
+
+  .field{
+    margin-bottom:16px;
+  }
+
+  .field label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--text);
+    margin-bottom:6px;
+  }
+
+  .field label .unit{
+    font-weight:500;
+    color:var(--text-muted);
+    font-size:12.5px;
+  }
+
+  .field svg{
+    width:16px;
+    height:16px;
+    color:var(--primary);
+    flex-shrink:0;
+  }
+
+  .input-wrap{
+    position:relative;
+  }
+
+  input[type="number"]{
+    width:100%;
+    font-family:'Inter', sans-serif;
+    font-size:16px; /* prevents iOS zoom-on-focus */
+    padding:13px 14px;
+    border-radius:12px;
+    border:1.5px solid var(--border);
+    background:var(--bg-tint);
+    color:var(--text);
+    outline:none;
+    transition:border-color .15s ease, background .15s ease;
+    -moz-appearance:textfield;
+  }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance:none;
+    margin:0;
+  }
+  input[type="number"]:focus{
+    border-color:var(--primary);
+    background:#fff;
+  }
+  input[type="number"]:focus-visible{
+    outline:2px solid var(--primary-dark);
+    outline-offset:1px;
+  }
+
+  .hint{
+    font-size:12px;
+    color:var(--text-muted);
+    margin-top:5px;
+  }
+
+  .field-error{
+    font-size:12.5px;
+    color:var(--high);
+    margin-top:5px;
+    display:none;
+  }
+  .field.invalid input{
+    border-color:var(--high);
+    background:var(--high-bg);
+  }
+  .field.invalid .field-error{
+    display:block;
+  }
+
+  .grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+
+  /* ---------- Submit ---------- */
+  .submit-btn{
+    width:100%;
+    border:none;
+    background:var(--primary);
+    color:#fff;
+    font-family:'Inter', sans-serif;
+    font-size:15.5px;
+    font-weight:600;
+    padding:15px 16px;
+    border-radius:12px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    margin-top:6px;
+    transition:background .15s ease, transform .05s ease;
+  }
+  .submit-btn:hover{ background:var(--primary-dark); }
+  .submit-btn:active{ transform:scale(0.99); }
+  .submit-btn:disabled{
+    background:#9ec9c9;
+    cursor:not-allowed;
+  }
+
+  .spinner{
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    border:2.5px solid rgba(255,255,255,0.4);
+    border-top-color:#fff;
+    animation:spin .7s linear infinite;
+    display:none;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  /* ---------- Result ---------- */
+  .result{
+    margin-top:18px;
+    border-radius:var(--radius);
+    padding:20px;
+    display:none;
+    border:1.5px solid transparent;
+  }
+  .result.show{ display:block; animation:fadeSlide .35s ease; }
+  @keyframes fadeSlide{
+    from{ opacity:0; transform:translateY(6px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  .result-top{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:6px;
+  }
+  .result-top svg{ width:22px; height:22px; flex-shrink:0; }
+  .result-label{
+    font-family:'Poppins', sans-serif;
+    font-size:18px;
+    font-weight:700;
+  }
+  .result-note{
+    font-size:13.5px;
+    line-height:1.55;
+  }
+  .result-confidence{
+    font-size:12px;
+    margin-top:10px;
+    opacity:0.8;
+  }
+
+  .result.low{ background:var(--low-bg); border-color:#bfe7cd; color:#155b34; }
+  .result.low .result-label{ color:var(--low); }
+  .result.mid{ background:var(--mid-bg); border-color:#f0d8a0; color:#7a4f01; }
+  .result.mid .result-label{ color:var(--mid); }
+  .result.high{ background:var(--high-bg); border-color:#f0c1cb; color:#7c2333; }
+  .result.high .result-label{ color:var(--high); }
+  .result.error{ background:#fbe9ec; border-color:#f0c1cb; color:#7c2333; }
+  .result.error .result-label{ color:var(--high); font-size:15px; }
+
+  footer{
+    text-align:center;
+    margin-top:22px;
+    font-size:11.5px;
+    line-height:1.6;
+    color:var(--text-muted);
+    padding:0 6px;
+  }
+
+  @media (max-width:400px){
+    .grid-2{ grid-template-columns:1fr; }
+    h1{ font-size:23px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header>
+    <span class="eyebrow">Prenatal Vitals Check</span>
+    <h1>Maternal Health Risk</h1>
+    <p class="subtitle">Enter today's vitals to get an instant risk read from your trained model.</p>
+    <svg class="ekg" viewBox="0 0 340 44" preserveAspectRatio="none">
+      <path d="M0,22 L70,22 L85,22 L95,4 L108,40 L120,14 L130,22 L340,22" />
+    </svg>
+  </header>
+
+  <form class="card" id="riskForm" novalidate>
+
+    <div class="field" id="field-age">
+      <label for="age">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
+        Age <span class="unit">years</span>
+      </label>
+      <div class="input-wrap">
+        <input type="number" id="age" inputmode="numeric" min="18" max="60" step="1" placeholder="e.g. 28" required>
+      </div>
+      <p class="field-error" id="err-age">Age must be 18 or older.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="field" id="field-sbp">
+        <label for="sbp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a5 5 0 0 1 10 0c0-2.8 2.2-5 5-5a5 5 0 0 1 5 5c0 5.5-7 10-7 10"/></svg>
+          Systolic BP <span class="unit">mmHg</span>
+        </label>
+        <div class="input-wrap">
+          <input type="number" id="sbp" inputmode="numeric" min="60" max="220" step="1" placeholder="120" required>
+        </div>
+      </div>
+
+      <div class="field" id="field-dbp">
+        <label for="dbp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a5 5 0 0 1 10 0c0-2.8 2.2-5 5-5a5 5 0 0 1 5 5c0 5.5-7 10-7 10"/></svg>
+          Diastolic BP <span class="unit">mmHg</span>
+        </label>
+        <div class="input-wrap">
+          <input type="number" id="dbp" inputmode="numeric" min="40" max="140" step="1" placeholder="80" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="field" id="field-bs">
+        <label for="bs">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2c3 4 6 7.5 6 11a6 6 0 1 1-12 0c0-3.5 3-7 6-11z"/></svg>
+          Blood Sugar <span class="unit">mmol/L</span>
+        </label>
+        <div class="input-wrap">
+          <input type="number" id="bs" inputmode="decimal" min="1" max="30" step="0.1" placeholder="7.5" required>
+        </div>
+      </div>
+
+      <div class="field" id="field-temp">
+        <label for="temp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14.76V4a2 2 0 0 0-4 0v10.76a4 4 0 1 0 4 0z"/></svg>
+          Body Temp <span class="unit">°F</span>
+        </label>
+        <div class="input-wrap">
+          <input type="number" id="temp" inputmode="decimal" min="90" max="110" step="0.1" placeholder="98.6" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="field" id="field-hr">
+      <label for="hr">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 8-4-16-3 8H2"/></svg>
+        Heart Rate <span class="unit">bpm</span>
+      </label>
+      <div class="input-wrap">
+        <input type="number" id="hr" inputmode="numeric" min="40" max="180" step="1" placeholder="76" required>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn" id="submitBtn">
+      <span class="spinner" id="spinner"></span>
+      <span id="btnText">Check My Risk Level</span>
+    </button>
+
+    <div class="result" id="result">
+      <div class="result-top">
+        <svg id="resultIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"></svg>
+        <span class="result-label" id="resultLabel"></span>
+      </div>
+      <p class="result-note" id="resultNote"></p>
+      <p class="result-confidence" id="resultConfidence"></p>
+    </div>
+
+  </form>
+
+  <footer>
+    This tool gives an automated estimate only and is not a medical diagnosis.<br>
+    Always confirm any result with your doctor or midwife.
+  </footer>
+
+</div>
+
+<script>
+  const form = document.getElementById('riskForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const spinner = document.getElementById('spinner');
+  const btnText = document.getElementById('btnText');
+  const result = document.getElementById('result');
+  const resultIcon = document.getElementById('resultIcon');
+  const resultLabel = document.getElementById('resultLabel');
+  const resultNote = document.getElementById('resultNote');
+  const resultConfidence = document.getElementById('resultConfidence');
+
+  const ICONS = {
+    ok: '<circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/>',
+    warn: '<path d="M12 2 1 21h22L12 2z"/><path d="M12 9v5"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/>',
+    alert: '<circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16" r="0.5" fill="currentColor"/>'
+  };
+
+  const fieldAge = document.getElementById('field-age');
+
+  function clearFieldError(){
+    fieldAge.classList.remove('invalid');
+  }
+
+  function showResult(kind, label, note, confidence){
+    result.className = 'result show ' + kind;
+    resultIcon.innerHTML = kind === 'low' ? ICONS.ok : (kind === 'high' ? ICONS.alert : (kind === 'error' ? ICONS.alert : ICONS.warn));
+    resultLabel.textContent = label;
+    resultNote.textContent = note;
+    resultConfidence.textContent = confidence ? `Model confidence: ${(confidence * 100).toFixed(0)}%` : '';
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Classify whatever label string the model returns into low/mid/high styling
+  function classifyRisk(riskText){
+    const t = riskText.toLowerCase();
+    if (t.includes('high')) return 'high';
+    if (t.includes('mid') || t.includes('medium')) return 'mid';
+    if (t.includes('low')) return 'low';
+    return 'mid'; // unknown label — neutral styling
+  }
+
+  const NOTES = {
+    low: "Vitals look within a typical range. Keep up with your regular prenatal check-ins.",
+    mid: "Some vitals are outside the usual range. Consider checking in with your doctor soon.",
+    high: "Several vitals are outside the usual range. Please contact your doctor or midwife promptly.",
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearFieldError();
+    result.className = 'result';
+
+    const age = parseFloat(document.getElementById('age').value);
+    const sbp = parseFloat(document.getElementById('sbp').value);
+    const dbp = parseFloat(document.getElementById('dbp').value);
+    const bs = parseFloat(document.getElementById('bs').value);
+    const temp = parseFloat(document.getElementById('temp').value);
+    const hr = parseFloat(document.getElementById('hr').value);
+
+    if (!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+
+    if (age < 18){
+      fieldAge.classList.add('invalid');
+      fieldAge.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    submitBtn.disabled = true;
+    spinner.style.display = 'inline-block';
+    btnText.textContent = 'Checking…';
+
+    try{
+      const res = await fetch('/predict', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ age, sbp, dbp, bs, temp, hr })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok){
+        showResult('error', "Couldn't complete the check", data.error || 'Something went wrong on the server.', null);
+      } else {
+        const kind = classifyRisk(data.risk);
+        showResult(kind, data.risk, NOTES[kind], data.confidence);
+      }
+    } catch (err){
+      showResult(
+        'error',
+        "Can't reach the server",
+        "Make sure main.py is running (python main.py) and you're viewing this page at http://localhost:5000.",
+        null
+      );
+    } finally {
+      submitBtn.disabled = false;
+      spinner.style.display = 'none';
+      btnText.textContent = 'Check My Risk Level';
+    }
+  });
+</script>
+
+</body>
+</html>
