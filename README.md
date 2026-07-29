@@ -1,7 +1,6 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Harikrishnankanjingattu/safe_mother/main/safe.png" width="100%" alt="Safe Mother Banner">
+  <img src="./safe.png" alt="Safe mother" width="100%">
 </p>
-
 <h1 align="center">Safe Mother</h1>
 
 <p align="center">
