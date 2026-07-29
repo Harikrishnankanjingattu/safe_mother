@@ -74,7 +74,7 @@ Algorithm:
 
 Accuracy:
 
-**66.5%**
+*68.5%**
 
 > Update this value if you retrain the model and obtain a different measured accuracy.
 
