@@ -1,35 +1,100 @@
-#  Safe Mother - Maternal Health Risk Prediction
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Harikrishnankanjingattu/safe_mother/main/safe.png" alt="Safe Mother Banner" width="100%">
+</p>
 
-A Machine Learning project that predicts the maternal health risk level of pregnant women using health parameters such as blood pressure, blood sugar, body temperature, heart rate, and age.
+<h1 align="center">🤰 Safe Mother</h1>
+
+<p align="center">
+  <strong>AI-Powered Maternal Health Risk Prediction System</strong>
+</p>
+
+<p align="center">
+  Predict • Prevent • Protect
+</p>
+
+<p align="center">
+  <a href="https://safe-mother-gray.vercel.app/">
+    <img src="https://img.shields.io/badge/🚀_Live_Demo-Visit_Website-blue?style=for-the-badge" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/Harikrishnankanjingattu/safe_mother">
+    <img src="https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github" />
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-Frontend-61DAFB?logo=react">
+  <img src="https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/Scikit--Learn-ML-F7931E?logo=scikitlearn&logoColor=white">
+  <img src="https://img.shields.io/badge/Vercel-Deployed-black?logo=vercel">
+  <img src="https://img.shields.io/badge/License-MIT-success">
+</p>
 
 ---
 
-## 📌 Project Overview
+# 📖 About
 
-Safe Mother is a machine learning-based healthcare application that helps identify the maternal risk level of pregnant women.
+**Safe Mother** is an AI-powered Maternal Health Risk Prediction System that predicts pregnancy risk levels using Machine Learning.
 
-The model predicts one of the following risk levels:
+The application analyzes maternal health parameters and classifies the patient into one of three categories:
 
 - 🟢 Low Risk
 - 🟡 Mid Risk
 - 🔴 High Risk
 
-The project is built using **Python** and **Scikit-learn** with a Logistic Regression classifier.
+The primary objective of this project is to assist in early detection of pregnancy-related health risks, enabling timely medical intervention.
 
 ---
 
-## 🚀 Features
+# 🌐 Live Demo
 
-- Predict maternal health risk
-- User-friendly console input
-- Data preprocessing using StandardScaler
-- Label encoding for categorical output
-- Model evaluation using accuracy
-- Save trained model using Joblib (.pkl)
+### 🚀 https://safe-mother-gray.vercel.app/
 
 ---
 
-## 📂 Dataset Features
+# ✨ Features
+
+- 🤖 AI-powered maternal risk prediction
+- 📊 Logistic Regression Machine Learning model
+- ⚡ Real-time prediction
+- 📈 Data preprocessing & feature scaling
+- 💾 Saved ML model using Joblib (.pkl)
+- 🌐 Responsive React frontend
+- 🚀 Deployed on Vercel
+- 📱 Clean and modern UI
+
+---
+
+# 🧠 Machine Learning Workflow
+
+```
+Dataset
+    │
+    ▼
+Data Preprocessing
+    │
+    ▼
+Label Encoding
+    │
+    ▼
+Train Test Split
+    │
+    ▼
+Feature Scaling
+    │
+    ▼
+Logistic Regression
+    │
+    ▼
+Model Evaluation
+    │
+    ▼
+Risk Prediction
+```
+
+---
+
+# 📊 Dataset Features
 
 | Feature | Description |
 |----------|-------------|
@@ -43,7 +108,26 @@ The project is built using **Python** and **Scikit-learn** with a Logistic Regre
 
 ---
 
-## 🛠 Technologies Used
+# 🎯 Prediction Classes
+
+| Risk Level | Meaning |
+|------------|---------|
+| 🟢 Low Risk | Healthy Pregnancy |
+| 🟡 Mid Risk | Requires Regular Monitoring |
+| 🔴 High Risk | Immediate Medical Attention Recommended |
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+- React.js
+- HTML5
+- CSS3
+- JavaScript
+
+## Machine Learning
 
 - Python
 - Pandas
@@ -51,66 +135,67 @@ The project is built using **Python** and **Scikit-learn** with a Logistic Regre
 - Scikit-learn
 - Joblib
 
----
+## Deployment
 
-## 📊 Machine Learning Pipeline
-
-1. Load Dataset
-2. Data Preprocessing
-3. Label Encoding
-4. Train-Test Split
-5. Feature Scaling
-6. Logistic Regression Training
-7. Model Evaluation
-8. Risk Prediction
-9. Save Model
+- Vercel
+- GitHub
 
 ---
 
-## 📈 Model Performance
+# 📈 Model Information
 
-Algorithm:
-- Logistic Regression
-
-Accuracy:
-
-*68.5%**
-
-> Update this value if you retrain the model and obtain a different measured accuracy.
+| Item | Value |
+|------|-------|
+| Algorithm | Logistic Regression |
+| Problem Type | Multi-Class Classification |
+| Prediction | Low / Mid / High Risk |
+| Feature Scaling | StandardScaler |
+| Label Encoding | LabelEncoder |
 
 ---
 
-## 📁 Project Structure
+# 📂 Project Structure
 
 ```
-safe_mother/
+safe_mother
+│
+├── frontend
+├── backend
+├── model
 │
 ├── dataset.csv
 ├── main.py
 ├── maternal_risk_model.pkl
 ├── scaler.pkl
 ├── label_encoder.pkl
-├── README.md
-└── requirements.txt
+├── requirements.txt
+├── safe.png
+└── README.md
 ```
 
 ---
 
-## ▶️ Installation
+# ⚙️ Installation
 
-Clone the repository
+## Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/safe_mother.git
+git clone https://github.com/Harikrishnankanjingattu/safe_mother.git
 ```
 
-Install dependencies
+## Move to Project
+
+```bash
+cd safe_mother
+```
+
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the project
+## Run Backend
 
 ```bash
 python main.py
@@ -118,46 +203,101 @@ python main.py
 
 ---
 
-## 💻 Example Input
+# 💻 Sample Input
 
 ```
-Age: 30
-Systolic Blood Pressure: 130
-Diastolic Blood Pressure: 80
-Blood Sugar: 7.2
-Body Temperature: 98.6
-Heart Rate: 72
+Age : 30
+
+Systolic Blood Pressure : 130
+
+Diastolic Blood Pressure : 80
+
+Blood Sugar : 7.2
+
+Body Temperature : 98.6
+
+Heart Rate : 72
 ```
 
-Example Output
+---
+
+# 📋 Sample Output
 
 ```
-Predicted Risk Level:
+Predicted Risk Level
+
 LOW RISK
 ```
 
 ---
 
-## 🔮 Future Improvements
+# 🚀 Future Improvements
 
-- Flask/FastAPI REST API
-- React Frontend
-- User Authentication
-- Risk History
-- PDF Report Generation
-- Cloud Deployment
-- Improved model using Random Forest or XGBoost
-
----
-
-## 👨‍💻 Author
-
-Harikrishnan K
-
-Machine Learning | Backend Development | AI Enthusiast
+- Random Forest Model
+- XGBoost Integration
+- Explainable AI (SHAP)
+- Doctor Dashboard
+- Patient History
+- Authentication
+- PDF Medical Report
+- Email Notifications
+- Cloud Database
+- Mobile Application
 
 ---
 
-## 📜 License
+# 🤝 Contributing
 
-This project is licensed under the MIT License.
+Contributions are welcome.
+
+1. Fork the repository
+
+2. Create a new branch
+
+```bash
+git checkout -b feature-name
+```
+
+3. Commit your changes
+
+```bash
+git commit -m "Added new feature"
+```
+
+4. Push the branch
+
+```bash
+git push origin feature-name
+```
+
+5. Create a Pull Request
+
+---
+
+# 👨‍💻 Author
+
+## Harikrishnan K
+
+Backend Developer • Machine Learning Enthusiast • AI Developer
+
+### GitHub
+
+https://github.com/Harikrishnankanjingattu
+
+---
+
+# ⭐ Support
+
+If you found this project helpful, please consider giving it a ⭐ on GitHub.
+
+---
+
+# 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+<p align="center">
+Made with ❤️ using Python, React and Machine Learning
+</p>
