@@ -1,4 +1,4 @@
-# 🤰 Safe Mother - Maternal Health Risk Prediction
+#  Safe Mother - Maternal Health Risk Prediction
 
 A Machine Learning project that predicts the maternal health risk level of pregnant women using health parameters such as blood pressure, blood sugar, body temperature, heart rate, and age.
 
