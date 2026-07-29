@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://github.com/Harikrishnankanjingattu/safe_mother/main/safe.png" width="100%" alt="Safe Mother Banner">
+  <img src="https://raw.githubusercontent.com/Harikrishnankanjingattu/safe_mother/main/safe.png" width="100%" alt="Safe Mother Banner">
 </p>
 
-<h1 align="center">🤰 Safe Mother</h1>
+<h1 align="center">Safe Mother</h1>
 
 <p align="center">
 AI-Powered Maternal Health Risk Prediction System
@@ -10,7 +10,7 @@ AI-Powered Maternal Health Risk Prediction System
 
 <p align="center">
   <a href="https://safe-mother-gray.vercel.app/">
-    <img src="https://img.shields.io/badge/🌸_Live_Demo-Visit_Website-ff69b4?style=for-the-badge">
+    <img src="https://img.shields.io/badge/Live_Demo-Visit_Website-ff69b4?style=for-the-badge">
   </a>
 </p>
 
@@ -23,25 +23,25 @@ AI-Powered Maternal Health Risk Prediction System
 
 ---
 
-## 🌸 About
+## About
 
-**Safe Mother** is a Machine Learning application that predicts maternal health risk using patient health parameters.
+Safe Mother is a Machine Learning application that predicts maternal health risk using patient health parameters.
 
 The model classifies patients into:
 
-- 🟢 Low Risk
-- 🟡 Mid Risk
-- 🔴 High Risk
+- Low Risk
+- Mid Risk
+- High Risk
 
 ---
 
-## 🚀 Live Demo
+## Live Demo
 
-🔗 https://safe-mother-gray.vercel.app/
+https://safe-mother-gray.vercel.app/
 
 ---
 
-## ✨ Features
+## Features
 
 - Maternal Health Risk Prediction
 - Logistic Regression Model
@@ -51,7 +51,7 @@ The model classifies patients into:
 
 ---
 
-## 📊 Dataset Features
+## Dataset Features
 
 - Age
 - SystolicBP
@@ -62,7 +62,7 @@ The model classifies patients into:
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - React
 - Python
@@ -73,7 +73,7 @@ The model classifies patients into:
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 safe_mother/
@@ -89,26 +89,22 @@ safe_mother/
 
 ---
 
-## ▶️ Run Locally
+## Run Locally
 
 ```bash
 git clone https://github.com/Harikrishnankanjingattu/safe_mother.git
-
 cd safe_mother
-
 pip install -r requirements.txt
-
 python main.py
 ```
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Harikrishnan K**
-
 GitHub: https://github.com/Harikrishnankanjingattu
 
 ---
 
-⭐ If you like this project, don't forget to star the repository.
+If you like this project, don't forget to star the repository.
