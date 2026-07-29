@@ -6,9 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.linear_model import LogisticRegression
 
-# ----------------------------------------------------
-# Model Initialization & Training / Loading
-# ----------------------------------------------------
+
 MODEL_FILE = "model.pkl"
 SCALER_FILE = "scaler.pkl"
 ENCODER_FILE = "encoder.pkl"
@@ -37,14 +35,10 @@ else:
     model = LogisticRegression(max_iter=1000)
     model.fit(X_train, y_train)
 
-    # Save artifacts
     joblib.dump(model, MODEL_FILE)
     joblib.dump(scaler, SCALER_FILE)
     joblib.dump(encoder, ENCODER_FILE)
 
-# ----------------------------------------------------
-# Flask App Setup
-# ----------------------------------------------------
 app = Flask(__name__, static_folder=".", static_url_path="")
 
 @app.route("/")
