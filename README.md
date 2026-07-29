@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Harikrishnankanjingattu/safe_mother/main/safe.png" width="100%" alt="Safe Mother Banner">
+  <img src="https://github.com/Harikrishnankanjingattu/safe_mother/main/safe.png" width="100%" alt="Safe Mother Banner">
 </p>
 
 <h1 align="center">🤰 Safe Mother</h1>
